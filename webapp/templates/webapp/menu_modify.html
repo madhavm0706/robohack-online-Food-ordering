@@ -55,7 +55,7 @@
 						<td>
 							<select name="item" class="btn btn-primary btn-lg">
 							{% for x in items %}
-								<option value="{{x.0}}">{{x.1}}</option>
+								<option value="{{x.0}}"> {{x.1}}</option>
 							{% endfor %}
 							</select>
 						</td>
@@ -82,7 +82,7 @@
 						<th>Quantity</th>
 						<th></th>
 					</thead>
-				{% for x in menu %}
+				{% for x in items %}
 					<tr>
 					<td>{{x.0}}</td>
 					<td>{{x.1}}</td>

@@ -1,6 +1,31 @@
 {% extends 'webapp/base.html'%}
 {% block title %}Menu{% endblock %}
-
+<script type="text/javascript" >
+	
+	var cart = [];
+		function pluscounter(pk){
+			cart.push(pk);
+			console.log(cart);
+		};
+		function minuscounter(pk){
+			if (cart!=[]){
+				var removeindex = cart.indexOf(pk);
+				cart.splice(removeindex, 1);
+				}
+				console.log(cart);
+		};
+	
+		function storearray(){
+			if(cart.length === 0)
+			{
+				alert('No items selected');
+				return false;
+			}
+			document.cookie = "cart="+cart+";Path=/";
+			document.cookie ="rest={{restid}};Path=/";
+			window.location = "/checkout/";
+		};
+	</script>
 {% block body %}
 	<div class="container">
 		<h1 class="text-info mb-2"><font size="6"><strong>{{rname}}</strong></font></h1>
@@ -73,30 +98,5 @@
 				</table>
 	</div>
 <br>
-<script type="text/javascript">
-	
-var cart = [];
-	function pluscounter(pk){
-		cart.push(pk);
-		console.log(cart);
-	};
-	function minuscounter(pk){
-		if (cart!=[]){
-			var removeindex = cart.indexOf(pk);
-			cart.splice(removeindex, 1);
-			}
-			console.log(cart);
-	};
 
-	function storearray(){
-		if(cart.length === 0)
-		{
-			alert('No items selected');
-			return false;
-		}
-		document.cookie = "cart="+cart+";Path=/";
-		document.cookie ="rest={{restid}};Path=/";
-		window.location = "/checkout/";
-	};
-</script>
 {% endblock %}
